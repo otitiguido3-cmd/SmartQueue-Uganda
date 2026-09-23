@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Q-Smart | Virtual Queue System</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --success: #16a34a;
+      --warning: #ca8a04;
+      --border: #e2e8f0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 5px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+      border: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+
+    /* Form Styles */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    input, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--primary);
+    }
+
+    .btn {
+      width: 100%;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-danger {
+      background-color: #ef4444;
+      margin-top: 10px;
+    }
+    .btn-danger:hover {
+      background-color: #dc2626;
+    }
+
+    /* Ticket Status Card */
+    .ticket-header {
+      text-align: center;
+      border-bottom: 2px dashed var(--border);
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+    }
+
+    .ticket-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 2px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-top: 8px;
+      text-transform: uppercase;
+    }
+
+    .status-waiting { background-color: #fef3c7; color: #b45309; }
+    .status-near { background-color: #ffedd5; color: #c2410c; animation: pulse 1.5s infinite; }
+    .status-serving { background-color: #dcfce7; color: #15803d; animation: pulse 1s infinite; }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.6; }
+      100% { opacity: 1; }
+    }
+
+    .queue-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .stat-box {
+      background-color: #f1f5f9;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-box .number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .stat-box .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .alert-banner {
+      background-color: #eff6ff;
+      border-left: 4px solid var(--primary);
+      padding: 12px 16px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Admin Simulator Panel */
+    .admin-panel {
+      border: 2px dashed var(--primary);
+      background: #eff6ff;
+    }
+
+    .admin-panel h3 {
+      font-size: 1rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .admin-actions select, .admin-actions button {
+      flex: 1;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎫 Q-Smart</h1>
+    <p>Join the line digitally. Relax until it's your turn.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- VIEW 1: JOIN QUEUE FORM -->
+    <div id="joinView" class="card">
+      <h2 style="margin-bottom: 16px; font-size: 1.25rem;">Take a Virtual Ticket</h2>
+      <form id="joinForm">
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" placeholder="e.g., John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" placeholder="e.g., 0780000000" required>
+        </div>
+        <div class="form-group">
+          <label for="serviceType">Select Service</label>
+          <select id="serviceType" required>
+            <option value="General Inquiry">General Inquiry</option>
+            <option value="Customer Support">Customer Support</option>
+            <option value="Payments & Cashier">Payments & Cashier</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Join Queue Now</button>
+      </form>
+    </div>
+
+    <!-- VIEW 2: ACTIVE TICKET TRACKER -->
+    <div id="ticketView" class="card hidden">
+      <div class="ticket-header">
+        <p style="font-size: 0.85rem; color: var(--text-muted);">YOUR TICKET NUMBER</p>
+        <div id="ticketNumberDisplay" class="ticket-number">A-101</div>
+        <div id="statusBadge" class="status-badge status-waiting">In Queue</div>
+      </div>
+
+      <!-- Dynamic Alert Message -->
+      <div id="alertBanner" class="alert-banner">
+        <span id="alertIcon">ℹ️</span>
+        <span id="alertMessage">You are currently in line. You can sit down or take a walk nearby.</span>
+      </div>
+
+      <div class="queue-stats">
+        <div class="stat-box">
+          <div id="peopleAheadDisplay" class="number">0</div>
+          <div class="label">People Ahead</div>
+        </div>
+        <div class="stat-box">
+          <div id="estimatedTimeDisplay" class="number">0 mins</div>
+          <div class="label">Est. Wait Time</div>
+        </div>
+      </div>
+
+      <div class="stat-box" style="margin-bottom: 16px;">
+        <div id="nowServingDisplay" class="number" style="color: var(--primary);">--</div>
+        <div class="label">Now Serving Number</div>
+      </div>
+
+      <button id="leaveQueueBtn" class="btn btn-danger">Leave Queue</button>
+    </div>
+
+    <!-- VIEW 3: SIMULATOR / DEMO CONTROL (To test the app) -->
+    <div class="card admin-panel">
+      <h3>🛠️ Service Desk Simulator (Staff View)</h3>
+      <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">
+        Use this panel to test advancing the queue as if staff are calling customers at counter desks.
+      </p>
+      <div class="admin-actions">
+        <select id="counterSelect">
+          <option value="Counter 1">Counter 1</option>
+          <option value="Counter 2">Counter 2</option>
+          <option value="Counter 3">Counter 3</option>
+        </select>
+        <button id="nextCustomerBtn" class="btn">Call Next Ticket</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // --- STATE MANAGEMENT ---
+    let queue = [
+      { ticket: "A-101", name: "Alice", service: "General Inquiry", status: "waiting" },
+      { ticket: "A-102", name: "Bob", service: "Payments & Cashier", status: "waiting" }
+    ];
+    let ticketCounter = 103;
+    let myTicket = null;
+    let currentlyServingTicket = null;
+    let currentlyServingCounter = "";
+
+    const AVG_MINUTES_PER_CUSTOMER = 3;
+
+    // --- DOM ELEMENTS ---
+    const joinView = document.getElementById("joinView");
+    const ticketView = document.getElementById("ticketView");
+    const joinForm = document.getElementById("joinForm");
+    
+    const ticketNumberDisplay = document.getElementById("ticketNumberDisplay");
+    const statusBadge = document.getElementById("statusBadge");
+    const alertBanner = document.getElementById("alertBanner");
+    const alertMessage = document.getElementById("alertMessage");
+    const peopleAheadDisplay = document.getElementById("peopleAheadDisplay");
+    const estimatedTimeDisplay = document.getElementById("estimatedTimeDisplay");
+    const nowServingDisplay = document.getElementById("nowServingDisplay");
+    
+    const leaveQueueBtn = document.getElementById("leaveQueueBtn");
+    const nextCustomerBtn = document.getElementById("nextCustomerBtn");
+    const counterSelect = document.getElementById("counterSelect");
+
+    // --- AUDIO NOTIFICATION (Browser Synthesized Beep) ---
+    function playNotificationSound() {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.type = "sine";
+        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+        osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.15); // A5
+        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.4);
+      } catch (e) {
+        console.log("Audio playback restricted.");
+      }
+    }
+
+    // --- FUNCTIONS ---
+
+    // Generate unique Ticket ID
+    function generateTicket() {
+      const ticket = `A-${ticketCounter}`;
+      ticketCounter++;
+      return ticket;
+    }
+
+    // Handle Joining Queue
+    joinForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById("fullName").value;
+      const phone = document.getElementById("phoneNumber").value;
+      const service = document.getElementById("serviceType").value;
+
+      const newTicketNumber = generateTicket();
+      
+      myTicket = {
+        ticket: newTicketNumber,
+        name: name,
+        phone: phone,
+        service: service,
+        status: "waiting"
+      };
+
+      queue.push(myTicket);
+
+      // Switch view
+      joinView.classList.add("hidden");
+      ticketView.classList.remove("hidden");
+
+      updateUI();
+    });
+
+    // Handle Leaving Queue
+    leaveQueueBtn.addEventListener("click", () => {
+      if (confirm("Are you sure you want to leave the queue?")) {
+        queue = queue.filter(item => item.ticket !== myTicket.ticket);
+        myTicket = null;
+        
+        ticketView.classList.add("hidden");
+        joinView.classList.remove("hidden");
+        joinForm.reset();
+        updateUI();
+      }
+    });
+
+    // Handle Admin Action: Staff calls Next Customer
+    nextCustomerBtn.addEventListener("click", () => {
+      if (queue.length === 0) {
+        alert("No customers in the queue!");
+        return;
+      }
+
+      // Remove current customer from queue and set as serving
+      const servedCustomer = queue.shift();
+      currentlyServingTicket = servedCustomer.ticket;
+      currentlyServingCounter = counterSelect.value;
+
+      updateUI();
+    });
+
+    // Update Dashboard UI & Check Customer Status
+    function updateUI() {
+      // 1. Update Now Serving display
+      if (currentlyServingTicket) {
+        nowServingDisplay.innerText = `${currentlyServingTicket} (${currentlyServingCounter})`;
+      } else {
+        nowServingDisplay.innerText = "--";
+      }
+
+      // If user hasn't joined queue yet, skip rest
+      if (!myTicket) return;
+
+      ticketNumberDisplay.innerText = myTicket.ticket;
+
+      // Calculate queue metrics
+      const myIndex = queue.findIndex(item => item.ticket === myTicket.ticket);
+
+      // CASE 1: Customer is currently being served!
+      if (currentlyServingTicket === myTicket.ticket) {
+        statusBadge.className = "status-badge status-serving";
+        statusBadge.innerText = "YOUR TURN!";
+        
+        alertBanner.style.backgroundColor = "#dcfce7";
+        alertBanner.style.borderColor = "#16a34a";
+        alertMessage.innerHTML = `<strong>Please proceed immediately to ${currentlyServingCounter}!</strong>`;
+        
+        peopleAheadDisplay.innerText = "0";
+        estimatedTimeDisplay.innerText = "0 mins";
+
+        playNotificationSound();
+        return;
+      }
+
+      // CASE 2: Customer is waiting in line
+      if (myIndex !== -1) {
+        const peopleAhead = myIndex;
+        const estWaitTime = peopleAhead * AVG_MINUTES_PER_CUSTOMER;
+
+        peopleAheadDisplay.innerText = peopleAhead;
+        estimatedTimeDisplay.innerText = `${estWaitTime} mins`;
+
+        // Near Status Notification (1 or 2 people ahead)
+        if (peopleAhead <= 2 && peopleAhead > 0) {
+          statusBadge.className = "status-badge status-near";
+          statusBadge.innerText = "NEARLY YOUR TURN";
+          
+          alertBanner.style.backgroundColor = "#ffedd5";
+          alertBanner.style.borderColor = "#c2410c";
+          alertMessage.innerHTML = `<strong>Get ready!</strong> Only ${peopleAhead} person(s) ahead of you. Please move towards the waiting lobby area.`;
+          
+          playNotificationSound();
+        } 
+        // Normal Waiting
+        else {
+          statusBadge.className = "status-badge status-waiting";
+          statusBadge.innerText = "IN QUEUE";
+
+          alertBanner.style.backgroundColor = "#eff6ff";
+          alertBanner.style.borderColor = "#2563eb";
+          alertMessage.innerText = "You are currently in line. You can sit down or take a walk nearby.";
+        }
+      }
+    }
+
+    // Initial render
+    updateUI();
+  </script>
+</body>
+</html>
