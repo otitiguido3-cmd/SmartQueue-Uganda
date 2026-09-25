@@ -1,9 +1,13 @@
 ```css
 /* =====================================================
    SMARTQUEUE UGANDA - HOME PAGE
+   RESPONSIVE MOBILE + TABLET + DESKTOP
    ===================================================== */
 
-/* ---------- GENERAL RESET ---------- */
+
+/* =====================================================
+   GENERAL RESET
+   ===================================================== */
 
 * {
     margin: 0;
@@ -13,13 +17,42 @@
 
 html {
     scroll-behavior: smooth;
+    width: 100%;
+    overflow-x: hidden;
 }
 
 body {
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    background-color: #f3f3f3;
-    color: #1f2937;
+    width: 100%;
     min-height: 100vh;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        Times,
+        serif;
+
+    background:
+        linear-gradient(
+            180deg,
+            #f8fafc 0%,
+            #eef4fc 100%
+        );
+
+    color: #1f2937;
+
+    /*
+       IMPORTANT:
+       The header is fixed, so the body must
+       reserve space for it.
+    */
+    padding-top: 105px;
+
+    /*
+       Space for the fixed footer.
+    */
+    padding-bottom: 125px;
+
+    overflow-x: hidden;
 }
 
 
@@ -28,45 +61,94 @@ body {
    ===================================================== */
 
 .header {
-    width: 98%;
-    min-height: 75px;
-    background-color: #344e89;
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 82px;
 
     display: flex;
     align-items: center;
 
-    padding: 12px 6%;
-    gap: 12px;
+    padding:
+        0 6%;
 
-    border-bottom: 1px solid #e5e7eb;
+    gap: 15px;
 
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    position: fixed;
-    top: 0;
-    right: 5px;
-    left: 5px;
+    background:
+        linear-gradient(
+            135deg,
+            #24437e 0%,
+            #315aa4 55%,
+            #4b74c2 100%
+        );
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    box-shadow:
+        0 5px 20px
+        rgba(20, 45, 90, 0.18);
+
+    z-index: 9999;
 }
 
-/* Main logo */
+
+/* Header logo */
 
 .header > img {
     width: 48px;
     height: 48px;
 
     object-fit: contain;
+
+    flex-shrink: 0;
+
+    filter:
+        drop-shadow(
+            0 3px 6px
+            rgba(0, 0, 0, 0.2)
+        );
 }
 
-/* Logo text */
 
-.header caption {
-    display: block;
+/* Header title */
+
+.header .logo-text {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
 }
 
-.header caption img {
-    width: 145px;
-    height: auto;
 
-    display: block;
+/* Header title text */
+
+.header .logo-text h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            1.1rem,
+            2vw,
+            1.5rem
+        );
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    text-align: center;
+
+    white-space: nowrap;
 }
 
 
@@ -78,62 +160,104 @@ body {
     width: 90%;
     max-width: 1100px;
 
-    margin: 45px auto 30px;
+    /*
+       IMPORTANT:
+       Do NOT use a large margin-top here.
+       The body padding already creates space
+       below the fixed header.
+    */
+    margin:
+        10px auto 35px;
+
+    padding: 0;
 }
+
+
+/* Greeting heading */
 
 .greeting h1 {
-    font-size: 35px;
+    margin: 0 0 10px;
+
+    color: #172033;
+
+    font-size:
+        clamp(
+            1.7rem,
+            4vw,
+            2.5rem
+        );
+
     font-weight: 700;
 
-    color: #111827;
-
-    margin-bottom: 10px;
+    line-height: 1.2;
 }
 
+
+/* Greeting paragraph */
+
 .greeting p {
-    font-size: 20px;
+    margin: 0;
+
     color: #6b7280;
+
+    font-size:
+        clamp(
+            0.95rem,
+            2vw,
+            1.2rem
+        );
 
     line-height: 1.6;
 }
 
 
 /* =====================================================
-   SERVICES SECTION
+   MAIN SERVICES
    ===================================================== */
 
 .services {
     width: 90%;
     max-width: 1100px;
 
-    margin: 0 auto 50px;
+    margin:
+        0 auto 45px;
 
     display: grid;
 
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns:
+        repeat(2, 1fr);
 
-    gap: 22px;
+    gap: 20px;
 }
 
 
-/* ---------- SERVICE CARD ---------- */
+/* Service card */
 
 .services > div {
-    background-color: #ffffff;
-
-    border-radius: 18px;
-
-    padding: 20px;
-    gap: 5px;
-    min-height: 180px;
+    min-height: 175px;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
-    border: 1px solid #e5e7eb;
+    padding: 18px;
 
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.06);
+    background:
+        linear-gradient(
+            135deg,
+            #ffffff,
+            #f7faff
+        );
+
+    border:
+        1px solid #e0e7f1;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 6px 20px
+        rgba(31, 55, 95, 0.07);
 
     transition:
         transform 0.25s ease,
@@ -142,13 +266,14 @@ body {
 }
 
 
-/* ---------- SERVICE LINK ---------- */
+/* Service link */
 
 .services a {
     width: 100%;
     height: 100%;
 
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -156,7 +281,7 @@ body {
 }
 
 
-/* ---------- SERVICE IMAGE ---------- */
+/* Service image */
 
 .services img {
     width: 100%;
@@ -168,29 +293,348 @@ body {
 
     object-fit: contain;
 
-    transition: transform 0.25s ease;
+    transition:
+        transform 0.25s ease;
 }
 
 
-/* ---------- HOVER EFFECT ---------- */
+/* Hover */
 
 .services > div:hover {
-    transform: translateY(-6px);
+    transform:
+        translateY(-5px);
 
-    border-color: #2563eb;
+    border-color:
+        #4775c5;
 
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
+    box-shadow:
+        0 13px 30px
+        rgba(31, 55, 95, 0.12);
 }
 
 .services > div:hover img {
-    transform: scale(1.04);
+    transform:
+        scale(1.05);
 }
 
 
-/* ---------- CLICK EFFECT ---------- */
+/* Click */
 
 .services > div:active {
-    transform: translateY(-2px);
+    transform:
+        scale(0.98);
+}
+
+
+/* =====================================================
+   POPULAR SERVICES TITLE
+   ===================================================== */
+
+body > h2 {
+    width: 90%;
+    max-width: 1100px;
+
+    margin:
+        0 auto 20px;
+
+    color: #172033;
+
+    font-size:
+        clamp(
+            1.25rem,
+            3vw,
+            1.7rem
+        );
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   POPULAR SERVICES
+   ===================================================== */
+
+.popular.Services {
+    width: 90%;
+    max-width: 1100px;
+
+    margin:
+        0 auto 45px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+
+/* Popular service card */
+
+.popular.Services .service1 {
+    min-height: 190px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e1e7f0;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 6px 18px
+        rgba(31, 55, 95, 0.06);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Popular service link */
+
+.popular.Services .service1 a {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+}
+
+
+/* Popular service image */
+
+.popular.Services .service1 img {
+    width: 100%;
+
+    max-width: 145px;
+
+    height: 115px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* Popular service label */
+
+.popular.Services .service1 label {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #1f2937;
+
+    font-size: 0.95rem;
+
+    font-weight: 600;
+
+    line-height: 1.3;
+
+    text-align: center;
+}
+
+
+/* Popular service hover */
+
+.popular.Services .service1:hover {
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #4775c5;
+
+    box-shadow:
+        0 13px 28px
+        rgba(31, 55, 95, 0.11);
+}
+
+.popular.Services .service1:hover img {
+    transform:
+        scale(1.06);
+}
+
+.popular.Services .service1:hover label {
+    color: #315aa3;
+}
+
+
+/* =====================================================
+   FOOTER NAVIGATION
+   ===================================================== */
+
+.footer_items {
+    position: fixed;
+
+    left: 50%;
+
+    bottom: 18px;
+
+    transform:
+        translateX(-50%);
+
+    width:
+        min(700px, 92%);
+
+    height: 82px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding:
+        6px 10px;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.97
+        );
+
+    border:
+        1px solid #e1e7ef;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 35px
+        rgba(31, 55, 95, 0.13);
+
+    backdrop-filter:
+        blur(15px);
+
+    -webkit-backdrop-filter:
+        blur(15px);
+
+    z-index: 9999;
+}
+
+
+/* Footer links */
+
+.footer_items > a {
+    width: 100%;
+    height: 68px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+
+    color: #6b7280;
+}
+
+
+/* Footer item */
+
+.footer_items > a > div {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    border-radius: 15px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* Footer icons */
+
+.footer_items img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* Footer labels */
+
+.footer_items label {
+    color: #6b7280;
+
+    font-size: 0.7rem;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+/* Footer hover */
+
+.footer_items > a:hover > div {
+    background: #f0f5ff;
+
+    transform:
+        translateY(-3px);
+}
+
+.footer_items > a:hover img {
+    transform:
+        scale(1.1);
+}
+
+.footer_items > a:hover label {
+    color: #315aa3;
+}
+
+
+/* Active Home */
+
+.footer_items > a:first-child > div {
+    background: #eef4ff;
+}
+
+.footer_items > a:first-child label {
+    color: #315aa3;
+
+    font-weight: 700;
+}
+
+.footer_items > a:first-child img {
+    transform:
+        scale(1.08);
 }
 
 
@@ -198,34 +642,50 @@ body {
    TABLET
    ===================================================== */
 
-@media (min-width: 600px) {
+@media (min-width: 600px)
+       and (max-width: 899px) {
+
+    body {
+        padding-top: 100px;
+        padding-bottom: 115px;
+    }
+
 
     .header {
-        padding-left: 8%;
-        padding-right: 8%;
+        height: 78px;
+
+        padding:
+            0 5%;
     }
+
 
     .greeting {
-        margin-top: 55px;
+        margin-top: 5px;
     }
 
-    .greeting h1 {
-        font-size: 36px;
-    }
-
-    .greeting p {
-        font-size: 18px;
-    }
 
     .services {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 20px;
     }
+
 
     .services > div {
-        min-height: 220px;
+        min-height: 200px;
     }
 
+
+    .popular.Services {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .footer_items {
+        bottom: 10px;
+    }
 }
 
 
@@ -235,49 +695,70 @@ body {
 
 @media (min-width: 900px) {
 
-    .header {
-        min-height: 85px;
-
-        padding-left: 8%;
-        padding-right: 8%;
+    body {
+        padding-top: 115px;
+        padding-bottom: 125px;
     }
+
+
+    .header {
+        height: 85px;
+
+        padding:
+            0 8%;
+    }
+
 
     .header > img {
         width: 52px;
         height: 52px;
     }
 
-    .header caption img {
-        width: 165px;
-    }
 
     .greeting {
-        margin-top: 60px;
-        margin-bottom: 35px;
+        margin-top: 5px;
+
+        margin-bottom: 38px;
     }
+
 
     .greeting h1 {
-        font-size: 40px;
+        font-size: 2.4rem;
     }
 
-    .greeting p {
-        font-size: 19px;
-    }
 
     .services {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns:
+            repeat(4, 1fr);
 
-        gap: 25px;
+        gap: 24px;
+
+        margin-bottom: 50px;
     }
+
 
     .services > div {
-        min-height: 230px;
+        min-height: 225px;
 
-        padding: 25px;
+        padding: 22px;
     }
 
+
     .services img {
-        max-width: 200px;
+        max-width: 190px;
+    }
+
+
+    .popular.Services {
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 22px;
+    }
+
+
+    .popular.Services .service1 {
+        min-height: 205px;
     }
 }
 
@@ -289,16 +770,35 @@ body {
 @media (min-width: 1200px) {
 
     .greeting,
-    .services {
+    .services,
+    body > h2,
+    .popular.Services {
         max-width: 1150px;
     }
 
-    .services {
-        gap: 30px;
+
+    .greeting {
+        margin-top: 5px;
     }
 
+
+    .services {
+        gap: 28px;
+    }
+
+
     .services > div {
-        min-height: 250px;
+        min-height: 245px;
+    }
+
+
+    .popular.Services {
+        gap: 25px;
+    }
+
+
+    .popular.Services .service1 {
+        min-height: 215px;
     }
 }
 
@@ -309,52 +809,164 @@ body {
 
 @media (max-width: 599px) {
 
-    .header {
-        min-height: 68px;
-
-        padding: 10px 5%;
+    body {
+        padding-top: 86px;
+        padding-bottom: 92px;
     }
+
+
+    /* Header */
+
+    .header {
+        height: 68px;
+
+        padding:
+            0 5%;
+    }
+
 
     .header > img {
         width: 42px;
         height: 42px;
     }
 
-    .header caption img {
-        width: 125px;
+
+    .header .logo-text h2 {
+        font-size: 1.05rem;
     }
+
+
+    /* Greeting */
 
     .greeting {
-        margin-top: 32px;
-        margin-bottom: 25px;
+        width: 90%;
+
+        margin:
+            5px auto 25px;
     }
+
 
     .greeting h1 {
-        font-size: 25px;
+        font-size: 1.55rem;
+
+        margin-bottom: 8px;
     }
 
+
     .greeting p {
-        font-size: 15px;
+        font-size: 0.92rem;
+
+        line-height: 1.5;
     }
+
+
+    /* Main services */
 
     .services {
         width: 90%;
 
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns:
+            repeat(2, 1fr);
 
-        gap: 15px;
+        gap: 14px;
+
+        margin-bottom: 35px;
     }
+
 
     .services > div {
         min-height: 145px;
 
-        padding: 12px;
+        padding: 10px;
 
         border-radius: 15px;
     }
 
+
     .services img {
-        max-width: 140px;
+        max-width: 130px;
+    }
+
+
+    /* Popular title */
+
+    body > h2 {
+        width: 90%;
+
+        margin:
+            0 auto 15px;
+
+        font-size: 1.25rem;
+    }
+
+
+    /* Popular services */
+
+    .popular.Services {
+        width: 90%;
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+        gap: 13px;
+
+        margin-bottom: 30px;
+    }
+
+
+    .popular.Services .service1 {
+        min-height: 150px;
+
+        padding: 10px;
+
+        border-radius: 15px;
+    }
+
+
+    .popular.Services .service1 img {
+        max-width: 110px;
+
+        height: 85px;
+    }
+
+
+    .popular.Services .service1 label {
+        margin-top: 7px;
+
+        font-size: 0.8rem;
+    }
+
+
+    /* Footer */
+
+    .footer_items {
+        bottom: 0;
+
+        width: 100%;
+
+        height: 76px;
+
+        padding:
+            5px 3px;
+
+        border-radius:
+            20px 20px 0 0;
+    }
+
+
+    .footer_items > a {
+        height: 66px;
+    }
+
+
+    .footer_items img {
+        width: 28px;
+        height: 28px;
+    }
+
+
+    .footer_items label {
+        font-size: 0.62rem;
     }
 }
 
@@ -366,605 +978,63 @@ body {
 @media (max-width: 380px) {
 
     .greeting h1 {
-        font-size: 22px;
+        font-size: 1.4rem;
     }
+
 
     .greeting p {
-        font-size: 14px;
+        font-size: 0.85rem;
     }
 
+
     .services {
-        gap: 12px;
+        gap: 11px;
     }
+
 
     .services > div {
         min-height: 125px;
-        padding: 8px;
+
+        padding: 7px;
     }
+
 
     .services img {
-        max-width: 115px;
-    }
-}
-
-
-/* =====================================================
-   POPULAR SERVICES
-   ===================================================== */
-
-body > h2 {
-    width: 90%;
-    max-width: 1100px;
-
-    margin: 45px auto 20px;
-
-    font-size: 26px;
-    font-weight: 700;
-
-    color: #172033;
-}
-
-
-/* Popular services grid */
-
-.popular.Services {
-    width: 90%;
-    max-width: 1100px;
-
-    margin: 0 auto 50px;
-
-    display: grid;
-
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 20px;
-}
-
-
-/* Individual service card */
-
-.popular.Services .service1 {
-    background: #ffffff;
-
-    border: 1px solid #e5e9f0;
-
-    border-radius: 18px;
-
-    padding: 18px;
-
-    min-height: 200px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
-
-    transition: 0.25s ease;
-}
-
-
-/* Image link */
-
-.popular.Services .service1 a {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 100%;
-}
-
-
-/* Service image */
-
-.popular.Services .service1 img {
-    width: 100%;
-
-    max-width: 150px;
-
-    height: 120px;
-
-    object-fit: contain;
-
-    transition: transform 0.25s ease;
-}
-
-
-/* =====================================================
-   SERVICE LABEL
-   ===================================================== */
-
-.popular.Services .service1 label {
-    display: block;
-
-    margin-top: 12px;
-
-    text-align: center;
-
-    font-size: 16px;
-
-    font-weight: 600;
-
-    color: #172033;
-
-    line-height: 1.3;
-
-    cursor: pointer;
-}
-
-
-/* Hover effect */
-
-.popular.Services .service1:hover {
-    transform: translateY(-5px);
-
-    border-color: #2563eb;
-
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.10);
-}
-
-
-.popular.Services .service1:hover img {
-    transform: scale(1.05);
-}
-
-
-.popular.Services .service1:hover label {
-    color: #2563eb;
-}
-
-
-/* =====================================================
-   TABLET
-   ===================================================== */
-
-@media (max-width: 899px) {
-
-    body > h2 {
-        font-size: 24px;
+        max-width: 110px;
     }
 
-    .popular.Services {
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 16px;
-    }
-
-    .popular.Services .service1 {
-        min-height: 190px;
-    }
-
-    .popular.Services .service1 img {
-        max-width: 140px;
-
-        height: 110px;
-    }
-
-    .popular.Services .service1 label {
-        font-size: 15px;
-
-        margin-top: 10px;
-    }
-}
-
-
-/* =====================================================
-   MOBILE
-   ===================================================== */
-
-@media (max-width: 599px) {
-
-    body > h2 {
-        font-size: 21px;
-
-        margin-top: 35px;
-        margin-bottom: 16px;
-    }
-
-    .popular.Services {
-        width: 90%;
-
-        grid-template-columns: repeat(2, 1fr);
-
-        gap: 13px;
-    }
-
-    .popular.Services .service1 {
-        min-height: 155px;
-
-        padding: 12px;
-
-        border-radius: 15px;
-    }
-
-    .popular.Services .service1 img {
-        max-width: 115px;
-
-        height: 90px;
-    }
-
-    .popular.Services .service1 label {
-        font-size: 14px;
-
-        margin-top: 8px;
-    }
-}
-
-
-/* =====================================================
-   VERY SMALL PHONES
-   ===================================================== */
-
-@media (max-width: 380px) {
 
     .popular.Services {
         gap: 10px;
     }
 
-    .popular.Services .service1 {
-        min-height: 140px;
 
-        padding: 8px;
+    .popular.Services .service1 {
+        min-height: 135px;
+
+        padding: 7px;
     }
+
 
     .popular.Services .service1 img {
-        max-width: 100px;
+        max-width: 95px;
 
-        height: 80px;
+        height: 75px;
     }
+
 
     .popular.Services .service1 label {
-        font-size: 13px;
-
-        margin-top: 6px;
-    }
-}
-
-
-/* =========================================
-   SMARTQUEUE FOOTER NAVIGATION
-   ========================================= */
-
-.footer_items {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 82px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    gap: 10px;
-
-    padding: 8px 16px;
-
-    background: rgba(255, 255, 255, 0.97);
-    border-top: 1px solid #e5e7eb;
-    box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.10);
-
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-
-    z-index: 1000;
-}
-
-
-/* Each clickable navigation item */
-.footer_items > a {
-    flex: 1;
-    max-width: 125px;
-    height: 70px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-decoration: none;
-    color: inherit;
-
-    border-radius: 16px;
-
-    transition:
-        background-color 0.25s ease,
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-/* Content inside each navigation item */
-.footer_items > a > div {
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    gap: 5px;
-
-    border-radius: 16px;
-}
-
-
-/* =========================================
-   FOOTER ICONS
-   ========================================= */
-
-.footer_items img {
-    width: 34px;
-    height: 34px;
-
-    object-fit: contain;
-
-    transition:
-        transform 0.25s ease,
-        opacity 0.25s ease;
-}
-
-
-/* Footer text */
-.footer_items label {
-    font-size: 12px;
-    font-weight: 600;
-
-    color: #6b7280;
-
-    text-align: center;
-    white-space: nowrap;
-
-    cursor: pointer;
-
-    transition: color 0.25s ease;
-}
-
-
-/* =========================================
-   HOVER EFFECT
-   ========================================= */
-
-.footer_items > a:hover {
-    background: #f0f6ff;
-
-    transform: translateY(-4px);
-
-    box-shadow: 0 5px 15px rgba(37, 99, 235, 0.10);
-}
-
-.footer_items > a:hover img {
-    transform: scale(1.12);
-}
-
-.footer_items > a:hover label {
-    color: #2563eb;
-}
-
-
-/* =========================================
-   ACTIVE HOME BUTTON
-   ========================================= */
-
-.footer_items > a:first-child {
-    background: #eaf3ff;
-
-    box-shadow: inset 0 0 0 1px rgba(37, 99, 235, 0.08);
-}
-
-.footer_items > a:first-child img {
-    transform: scale(1.10);
-}
-
-.footer_items > a:first-child label {
-    color: #2563eb;
-    font-weight: 700;
-}
-
-
-/* =========================================
-   CLICK EFFECT
-   ========================================= */
-
-.footer_items > a:active {
-    transform: scale(0.94);
-}
-
-
-/* =========================================
-   MOBILE VERSION
-   ========================================= */
-
-@media (max-width: 599px) {
-
-    .footer_items {
-        height: 78px;
-
-        padding: 6px 5px;
-
-        gap: 3px;
-
-        border-radius: 20px 20px 0 0;
-    }
-
-
-    .footer_items > a {
-        height: 68px;
-        max-width: none;
-
-        border-radius: 15px;
-    }
-
-
-    .footer_items > a > div {
-        border-radius: 15px;
-        gap: 4px;
-    }
-
-
-    /* Bigger mobile icons */
-    .footer_items img {
-        width: 31px;
-        height: 31px;
-    }
-
-
-    .footer_items label {
-        font-size: 10px;
-    }
-}
-
-
-/* =========================================
-   SMALL PHONES
-   ========================================= */
-
-@media (max-width: 380px) {
-
-    .footer_items {
-        height: 72px;
-        padding: 5px 2px;
-    }
-
-
-    .footer_items > a {
-        height: 63px;
+        font-size: 0.72rem;
     }
 
 
     .footer_items img {
-        width: 29px;
-        height: 29px;
+        width: 26px;
+        height: 26px;
     }
 
 
     .footer_items label {
-        font-size: 9px;
+        font-size: 0.57rem;
     }
 }
-
-
-/* =========================================
-   DESKTOP VERSION
-   ========================================= */
-
-@media (min-width: 900px) {
-
-    .footer_items {
-        width: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: min(650px, 90%);
-        height: 88px;
-        bottom: 18px;
-
-        padding: 8px 14px;
-
-        gap: 12px;
-
-        border: 1px solid #e5e7eb;
-        border-radius: 24px;
-
-        box-shadow:
-            0 10px 35px rgba(0, 0, 0, 0.12),
-            0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-
-    .footer_items > a {
-        flex: 1;
-
-        max-width: none;
-
-        height: 72px;
-
-        border-radius: 18px;
-    }
-
-
-    .footer_items > a > div {
-        gap: 6px;
-        border-radius: 18px;
-    }
-
-
-    /* Large desktop icons */
-    .footer_items img {
-        width: 38px;
-        height: 38px;
-    }
-
-
-    .footer_items label {
-        font-size: 12px;
-    }
-
-
-    .footer_items > a:hover {
-        transform: translateY(-5px);
-    }
-
-
-    .footer_items > a:hover img {
-        transform: scale(1.15);
-    }
-}
-
-
-/* =========================================
-   LARGE DESKTOP SCREENS
-   ========================================= */
-
-@media (min-width: 1200px) {
-
-    .footer_items {
-        width: 700px;
-        height: 92px;
-
-        bottom: 22px;
-
-        border-radius: 26px;
-    }
-
-
-    .footer_items > a {
-        height: 76px;
-    }
-
-
-    .footer_items img {
-        width: 40px;
-        height: 40px;
-    }
-
-
-    .footer_items label {
-        font-size: 13px;
-    }
-}
-
-
-/* =========================================
-   PREVENT PAGE CONTENT HIDING BEHIND FOOTER
-   ========================================= */
-
-body {
-    padding-bottom: 115px;
-}
-
-
-/* On desktop the floating footer doesn't
-   need as much extra space */
-@media (min-width: 900px) {
-
-    body {
-        padding-bottom: 125px;
-    }
-}
-```

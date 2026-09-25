@@ -1,0 +1,900 @@
+```css
+/* =========================================================
+   SMARTQUEUE UGANDA
+   SERVICE SELECTION PAGE
+   ========================================================= */
+
+/* =========================
+   GLOBAL RESET
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f7fc;
+    color: #1f2937;
+    min-height: 100vh;
+
+    /* Space for fixed header and footer */
+    padding-top: 90px;
+    padding-bottom: 95px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: 78px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 6%;
+
+    background: linear-gradient(
+        135deg,
+        #203f7a,
+        #315aa5,
+        #4775c9
+    );
+
+    box-shadow: 0 5px 20px rgba(20, 50, 100, 0.18);
+
+    z-index: 1000;
+}
+
+/* Logo */
+
+.header > img {
+    width: 48px;
+    height: 48px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(
+        0 3px 6px rgba(0, 0, 0, 0.18)
+    );
+}
+
+/* Header title */
+
+.header .logo-text {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 48px;
+}
+
+.header .logo-text h2 {
+    color: white;
+
+    font-size: 1.35rem;
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SEARCH SECTION
+   ========================================================= */
+
+.serach_service {
+    width: 92%;
+    max-width: 1050px;
+
+    margin: 28px auto 20px;
+}
+
+/* Search form */
+
+.serach_service form {
+    width: 100%;
+}
+
+/* Search box */
+
+.search.box {
+    width: 89%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background: white;
+
+    border: 1px solid #e1e7f0;
+
+    border-radius: 15px;
+
+    padding: 13px 18px;
+
+    box-shadow:
+        0 5px 18px rgba(31, 55, 95, 0.07);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Search box focus */
+
+.search.box:focus-within {
+    border-color: #4775c9;
+
+    box-shadow:
+        0 0 0 3px rgba(71, 117, 201, 0.12);
+}
+
+/* Search icon */
+
+.search.box img {
+    width: 24px;
+    height: 24px;
+
+    object-fit: contain;
+
+    opacity: 0.65;
+}
+
+/* Search label */
+
+.search.box label {
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    color: #374151;
+
+    white-space: nowrap;
+}
+
+/* Search input */
+
+.search.box input {
+    flex: 1;
+
+    width: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    font-size: 1rem;
+
+    color: #1f2937;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.search.box input::placeholder {
+    color: #9ca3af;
+}
+
+
+/* =========================================================
+   SERVICE RESULTS CONTAINER
+   ========================================================= */
+
+.search_results {
+    width: 92%;
+    max-width: 1050px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(280px, 1fr));
+
+    gap: 18px;
+}
+
+
+/* Remove default link styling */
+
+.search_results a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* =========================================================
+   SERVICE CARD
+   ========================================================= */
+
+.my_result {
+    min-height: 105px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 17px;
+
+    padding: 15px;
+
+    background: white;
+
+    border: 1px solid #e5eaf2;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 18px rgba(31, 55, 95, 0.07);
+
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+/* Small decorative line */
+
+.my_result::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 4px;
+
+    background: #3f68b1;
+
+    opacity: 0;
+
+    transition: opacity 0.25s ease;
+}
+
+
+/* Hover */
+
+.my_result:hover {
+    transform: translateY(-4px);
+
+    border-color: #cbd9ef;
+
+    box-shadow:
+        0 12px 28px rgba(31, 55, 95, 0.13);
+}
+
+.my_result:hover::before {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   SERVICE ICON
+   ========================================================= */
+
+.my_result img {
+    width: 68px;
+    height: 68px;
+
+    flex-shrink: 0;
+
+    object-fit: contain;
+
+    padding: 12px;
+
+    background: #eef4ff;
+
+    border-radius: 16px;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease;
+}
+
+.my_result:hover img {
+    transform: scale(1.05);
+
+    background: #e4edff;
+}
+
+
+/* =========================================================
+   SERVICE TEXT
+   ========================================================= */
+
+.my_result .text-block {
+    flex: 1;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+
+/* Service name */
+
+.my_result p:first-of-type {
+    margin: 0;
+
+    color: #1f3f7a;
+
+    font-size: 1.08rem;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+
+/* Service category */
+
+.my_result p:last-of-type {
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 0.88rem;
+
+    line-height: 1.4;
+}
+
+```css
+/* =========================================================
+   SMARTQUEUE FOOTER
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+.footer_items {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 80px;
+
+    display: grid;
+
+    /*
+       Four equal sections.
+       This prevents Home and My Number
+       from being pushed outside the screen.
+    */
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    align-items: center;
+
+    padding: 5px 8px;
+
+    margin: 0;
+
+    background: rgba(255, 255, 255, 0.98);
+
+    border-top:
+        1px solid #e2e7ef;
+
+    box-shadow:
+        0 -6px 22px
+        rgba(31, 55, 95, 0.10);
+
+    z-index: 9999;
+
+    /*
+       Prevent footer content from
+       creating horizontal overflow.
+    */
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   FOOTER LINK
+   ========================================================= */
+
+.footer_items > a {
+    width: 100%;
+    min-width: 0;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 2px;
+
+    margin: 0;
+
+    text-decoration: none;
+
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   FOOTER ITEM
+   ========================================================= */
+
+.footer_items > a > div {
+    width: 100%;
+    height: 66px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    border-radius: 13px;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   FOOTER ICON
+   ========================================================= */
+
+.footer_items img {
+    width: 29px;
+    height: 29px;
+
+    max-width: 29px;
+    max-height: 29px;
+
+    object-fit: contain;
+
+    display: block;
+
+    flex-shrink: 0;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   FOOTER LABEL
+   ========================================================= */
+
+.footer_items label {
+    display: block;
+
+    width: 100%;
+
+    color: #6b7280;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1.1;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HOVER EFFECT
+   ========================================================= */
+
+.footer_items > a:hover > div {
+    background: #eef4ff;
+
+    transform: translateY(-2px);
+}
+
+.footer_items > a:hover img {
+    transform: scale(1.08);
+}
+
+.footer_items > a:hover label {
+    color: #315aa5;
+}
+
+
+/* =========================================================
+   ACTIVE SERVICES BUTTON
+   ========================================================= */
+
+/*
+   This is the Services page,
+   so Services is highlighted.
+*/
+
+.footer_items > a:nth-child(3) > div {
+    background: #eef4ff;
+}
+
+.footer_items > a:nth-child(3) img {
+    transform: scale(1.08);
+}
+
+.footer_items > a:nth-child(3) label {
+    color: #315aa5;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+    .footer_items {
+        height: 84px;
+
+        padding:
+            5px 10%;
+
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+    .footer_items > a {
+        height: 74px;
+    }
+
+    .footer_items > a > div {
+        height: 70px;
+    }
+
+    .footer_items img {
+        width: 31px;
+        height: 31px;
+
+        max-width: 31px;
+        max-height: 31px;
+    }
+
+    .footer_items label {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+    .footer_items {
+        left: 50%;
+        right: auto;
+
+        transform:
+            translateX(-50%);
+
+        width:
+            min(720px, 90%);
+
+        height: 88px;
+
+        bottom: 18px;
+
+        padding:
+            6px 12px;
+
+        border:
+            1px solid #e1e7ef;
+
+        border-radius: 22px;
+
+        box-shadow:
+            0 10px 32px
+            rgba(31, 55, 95, 0.14);
+    }
+
+    .footer_items > a {
+        height: 76px;
+    }
+
+    .footer_items > a > div {
+        height: 72px;
+
+        border-radius: 15px;
+
+        gap: 4px;
+    }
+
+    .footer_items img {
+        width: 34px;
+        height: 34px;
+
+        max-width: 34px;
+        max-height: 34px;
+    }
+
+    .footer_items label {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .footer_items {
+        height: 74px;
+
+        padding:
+            4px 2px;
+    }
+
+    .footer_items > a {
+        height: 66px;
+    }
+
+    .footer_items > a > div {
+        height: 62px;
+
+        gap: 2px;
+
+        border-radius: 11px;
+    }
+
+    .footer_items img {
+        width: 26px;
+        height: 26px;
+
+        max-width: 26px;
+        max-height: 26px;
+    }
+
+    .footer_items label {
+        font-size: 8.5px;
+    }
+}
+```
+
+
+/* =========================================================
+   ACTIVE SERVICES BUTTON
+   ========================================================= */
+
+/* Since this is the Services page */
+
+.footer_items a:nth-child(3) div {
+    color: #315aa5;
+}
+
+.footer_items a:nth-child(3) img {
+    transform: scale(1.08);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+    .header {
+        padding: 0 5%;
+    }
+
+    .search_results {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .my_result {
+        min-height: 100px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        padding-top: 82px;
+        padding-bottom: 90px;
+    }
+
+
+    /* Header */
+
+    .header {
+        height: 70px;
+
+        padding: 0 18px;
+    }
+
+    .header > img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .header .logo-text {
+        margin-right: 42px;
+    }
+
+    .header .logo-text h2 {
+        font-size: 1.12rem;
+    }
+
+
+    /* Search */
+
+    .serach_service {
+        width: 92%;
+
+        margin-top: 20px;
+    }
+
+    .search.box {
+        padding: 12px 14px;
+
+        border-radius: 14px;
+    }
+
+    .search.box img {
+        width: 21px;
+        height: 21px;
+    }
+
+    .search.box label {
+        display: none;
+    }
+
+    .search.box input {
+        font-size: 0.95rem;
+    }
+
+
+    /* Services */
+
+    .search_results {
+        width: 92%;
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+    .my_result {
+        min-height: 92px;
+
+        padding: 12px;
+
+        border-radius: 16px;
+    }
+
+    .my_result img {
+        width: 60px;
+        height: 60px;
+
+        padding: 10px;
+
+        border-radius: 14px;
+    }
+
+    .my_result p:first-of-type {
+        font-size: 1rem;
+    }
+
+    .my_result p:last-of-type {
+        font-size: 0.82rem;
+    }
+
+
+    /* Footer */
+
+    .footer_items {
+        height: 76px;
+
+        padding: 5px 8px;
+    }
+
+    .footer_items img {
+        width: 27px;
+        height: 27px;
+    }
+
+    .footer_items label {
+        font-size: 0.68rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .header .logo-text h2 {
+        font-size: 1rem;
+    }
+
+    .my_result {
+        gap: 12px;
+    }
+
+    .my_result img {
+        width: 54px;
+        height: 54px;
+    }
+
+    .my_result p:first-of-type {
+        font-size: 0.95rem;
+    }
+
+    .my_result p:last-of-type {
+        font-size: 0.78rem;
+    }
+
+    .footer_items label {
+        font-size: 0.62rem;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.search_results a:focus-visible,
+.footer_items a:focus-visible {
+    outline: 3px solid rgba(63, 104, 177, 0.35);
+
+    outline-offset: 3px;
+
+    border-radius: 16px;
+}
