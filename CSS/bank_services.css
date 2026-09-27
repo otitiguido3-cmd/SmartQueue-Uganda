@@ -1,0 +1,730 @@
+
+/* =========================================================
+   SMARTQUEUE UGANDA
+   BANK SERVICES PAGE
+   ---------------------------------------------------------
+   NOTE:
+   Header and footer are intentionally NOT styled here.
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #172b4d;
+    min-height: 100vh;
+
+    /*
+       Creative background:
+       soft blue gradient + subtle radial highlights
+    */
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(66, 153, 225, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(72, 187, 120, 0.10),
+            transparent 25%
+        ),
+        linear-gradient(
+            135deg,
+            #f5f9ff 0%,
+            #eef5ff 45%,
+            #f8fbff 100%
+        );
+
+    padding-bottom: 30px;
+}
+
+
+/* =========================================================
+   MAIN BANK SECTION
+   ========================================================= */
+
+.bank_name {
+    width: 100%;
+    padding: 25px 16px 10px;
+}
+
+
+/* =========================================================
+   BANK DETAILS CARD
+   ========================================================= */
+
+.bank_details {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 17px;
+
+    padding: 20px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    border: 1px solid rgba(213, 225, 240, 0.9);
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 30px rgba(27, 72, 113, 0.08),
+        0 2px 6px rgba(27, 72, 113, 0.04);
+
+    backdrop-filter: blur(8px);
+}
+
+
+/* Bank logo */
+
+.bank_details img {
+    width: 68px;
+    height: 68px;
+
+    object-fit: contain;
+
+    padding: 12px;
+
+    background: #edf5ff;
+
+    border: 1px solid #dceaff;
+
+    border-radius: 17px;
+
+    flex-shrink: 0;
+}
+
+
+/* Bank name */
+
+.bank_details h2 {
+    font-size: 21px;
+    font-weight: 700;
+
+    color: #123b70;
+
+    margin-bottom: 6px;
+}
+
+
+/* Location */
+
+.bank_details p {
+    font-size: 14px;
+    color: #718096;
+}
+
+
+/* =========================================================
+   BANK INFORMATION SECTION
+   ========================================================= */
+
+.bank_info {
+    width: 100%;
+    padding: 10px 16px 25px;
+}
+
+.bank_info form {
+    width: 100%;
+    max-width: 720px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+/* =========================================================
+   GENERAL INFORMATION CARD
+   ========================================================= */
+
+.bank_info form > div:first-child {
+    background: rgba(255, 255, 255, 0.94);
+
+    padding: 19px 20px;
+
+    border-radius: 18px;
+
+    border: 1px solid #e0e9f4;
+
+    box-shadow:
+        0 8px 22px rgba(27, 72, 113, 0.06);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Small decorative line */
+
+.bank_info form > div:first-child::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 5px;
+    height: 100%;
+
+    background: linear-gradient(
+        to bottom,
+        #2f80ed,
+        #123b70
+    );
+}
+
+
+/* Information title */
+
+.bank_info form > div:first-child p {
+    margin-bottom: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #718096;
+
+    padding-left: 5px;
+}
+
+
+/* Waiting time */
+
+.bank_info form > div:first-child label {
+    display: block;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    color: #123b70;
+
+    padding-left: 5px;
+}
+
+
+/* =========================================================
+   QUEUE INFORMATION
+   ========================================================= */
+
+.queue_info {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background: rgba(255, 255, 255, 0.94);
+
+    border: 1px solid #e0e9f4;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 8px 22px rgba(27, 72, 113, 0.06);
+}
+
+
+/* Individual queue information */
+
+.queue_info > div {
+    padding: 19px 18px;
+
+    position: relative;
+}
+
+
+/* Divider */
+
+.queue_info > div:first-child {
+    border-right: 1px solid #e2eaf3;
+}
+
+
+/* Queue titles */
+
+.queue_info p {
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    color: #718096;
+
+    margin-bottom: 8px;
+}
+
+
+/* Queue numbers */
+
+.queue_info label {
+    display: block;
+
+    font-size: 23px;
+
+    font-weight: 800;
+
+    color: #123b70;
+}
+
+
+/* Currently serving special styling */
+
+.queue_info > div:last-child label {
+    color: #198754;
+}
+
+
+/* =========================================================
+   AVAILABLE SERVICES
+   ========================================================= */
+
+.available_services {
+    background: rgba(255, 255, 255, 0.96);
+
+    padding: 20px;
+
+    border-radius: 20px;
+
+    border: 1px solid #e0e9f4;
+
+    box-shadow:
+        0 8px 22px rgba(27, 72, 113, 0.06);
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+/* Available Services heading */
+
+.available_services > label {
+    width: 100%;
+
+    display: block;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    color: #172b4d;
+
+    margin-bottom: 2px;
+}
+
+
+/* =========================================================
+   SERVICE BUTTONS
+   ========================================================= */
+
+.available_services a {
+    /*
+       Two buttons per row
+    */
+
+    flex: 1 1 calc(50% - 6px);
+
+    min-width: 0;
+
+    text-decoration: none;
+
+    display: flex;
+}
+
+
+/* Service button */
+
+.service_offered {
+    width: 100%;
+
+    min-height: 58px;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d8e4f2;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f8fbff,
+            #eef5ff
+        );
+
+    color: #174578;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* Small service indicator */
+
+.service_offered::before {
+    content: "✓";
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    margin-right: 9px;
+
+    border-radius: 50%;
+
+    background: #dcecff;
+
+    color: #1765a8;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    vertical-align: middle;
+}
+
+
+/* Hover effect */
+
+.service_offered:hover {
+    transform: translateY(-2px);
+
+    border-color: #8db9e8;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef6ff,
+            #e4f0ff
+        );
+
+    box-shadow:
+        0 7px 15px rgba(31, 92, 145, 0.10);
+}
+
+
+/* Click effect */
+
+.service_offered:active {
+    transform: scale(0.98);
+}
+
+
+/* Focus */
+
+.service_offered:focus {
+    outline: none;
+
+    border-color: #2f80ed;
+
+    box-shadow:
+        0 0 0 3px rgba(47, 128, 237, 0.13);
+}
+
+
+/* =========================================================
+   ODD NUMBER OF SERVICES
+   ---------------------------------------------------------
+   The last service expands to fill the remaining width.
+   ========================================================= */
+
+.available_services a:last-child:nth-child(odd) {
+    flex-basis: 100%;
+}
+
+
+/*
+   Because the heading label is the first child,
+   this rule handles the actual service links correctly
+   when there are 3, 5, 7... services.
+*/
+
+.available_services a:last-child {
+    flex-grow: 1;
+}
+
+
+/* =========================================================
+   JOIN QUEUE BUTTON
+   ========================================================= */
+
+.join_queue {
+    width: 100%;
+
+    min-height: 58px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #4df466,
+            #0da941
+        );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 18px rgba(18, 59, 112, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Join Queue hover */
+
+.join_queue:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #0e315d,
+            #174f8d
+        );
+
+    box-shadow:
+        0 11px 23px rgba(18, 59, 112, 0.28);
+}
+
+
+/* Join Queue active */
+
+.join_queue:active {
+    transform: translateY(0);
+
+    box-shadow:
+        0 5px 12px rgba(18, 59, 112, 0.20);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (min-width: 600px) {
+
+    .bank_name {
+        padding: 30px 25px 12px;
+    }
+
+    .bank_info {
+        padding: 12px 25px 30px;
+    }
+
+
+    .bank_details {
+        padding: 22px;
+    }
+
+
+    .bank_details img {
+        width: 74px;
+        height: 74px;
+    }
+
+
+    .bank_details h2 {
+        font-size: 23px;
+    }
+
+
+    .queue_info > div {
+        padding: 21px;
+    }
+
+
+    .queue_info label {
+        font-size: 25px;
+    }
+
+
+    .service_offered {
+        min-height: 62px;
+
+        font-size: 15px;
+
+    }
+    .join_queue {
+    
+        margin-bottom: 50px;
+
+       
+    }
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media (min-width: 900px) {
+
+    .bank_name {
+
+        padding-top: 35px;
+    }
+
+
+    .bank_info {
+        padding-top: 15px;
+    }
+
+
+    .bank_details {
+        max-width: 760px;
+    }
+
+
+    .bank_info form {
+        max-width: 760px;
+    }
+
+
+    .available_services {
+        padding: 22px;
+    }
+
+
+    .service_offered {
+        min-height: 64px;
+
+        font-size: 15px;
+    }
+
+
+    .join_queue {
+        min-height: 62px;
+        margin-bottom: 50px;
+
+        font-size: 17px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+    .bank_details {
+        padding: 15px;
+        gap: 12px;
+    }
+
+
+    .bank_details img {
+        width: 55px;
+        height: 55px;
+    }
+
+
+    .bank_details h2 {
+        font-size: 18px;
+    }
+
+
+    .bank_details p {
+        font-size: 12px;
+    }
+
+
+    .queue_info > div {
+        padding: 15px 12px;
+    }
+
+
+    .queue_info p {
+        font-size: 11px;
+    }
+
+
+    .queue_info label {
+        font-size: 20px;
+    }
+
+
+    .available_services {
+        padding: 16px;
+        gap: 9px;
+    }
+
+
+    .service_offered {
+        min-height: 55px;
+
+        padding: 9px;
+
+        font-size: 12px;
+    }
+
+
+    .service_offered::before {
+        width: 21px;
+        height: 21px;
+
+        margin-right: 5px;
+
+        font-size: 11px;
+    }
+}
+
+
+
