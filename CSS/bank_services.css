@@ -25,6 +25,7 @@ html {
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: #172b4d;
+    background-color: #8db9e8;
     min-height: 100vh;
 
     /*
@@ -127,7 +128,7 @@ body {
 /* Location */
 
 .bank_details p {
-    font-size: 14px;
+    font-size: 24px;
     color: #718096;
 }
 
@@ -202,7 +203,7 @@ body {
 .bank_info form > div:first-child p {
     margin-bottom: 7px;
 
-    font-size: 13px;
+    font-size: 17px;
     font-weight: 600;
 
     color: #718096;
@@ -216,7 +217,7 @@ body {
 .bank_info form > div:first-child label {
     display: block;
 
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 700;
 
     color: #123b70;
@@ -265,8 +266,8 @@ body {
 
 /* Queue titles */
 
-.queue_info p {
-    font-size: 12px;
+.queue_info div p {
+    font-size: 15px;
 
     line-height: 1.4;
 
@@ -281,7 +282,7 @@ body {
 .queue_info label {
     display: block;
 
-    font-size: 23px;
+    font-size: 20px;
 
     font-weight: 800;
 
@@ -327,7 +328,7 @@ body {
 
     display: block;
 
-    font-size: 17px;
+    font-size: 20px;
 
     font-weight: 700;
 
@@ -378,7 +379,7 @@ body {
 
     color: #174578;
 
-    font-size: 14px;
+    font-size: 18px;
 
     font-weight: 700;
 
@@ -419,7 +420,7 @@ body {
 
     color: #1765a8;
 
-    font-size: 13px;
+    font-size: 17px;
 
     font-weight: 800;
 
@@ -509,7 +510,7 @@ body {
 
     color: #ffffff;
 
-    font-size: 16px;
+    font-size: 18px;
 
     font-weight: 700;
 
