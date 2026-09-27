@@ -1,0 +1,1439 @@
+
+/* =========================================================
+   SMARTQUEUE UGANDA
+   PREMIUM DIGITAL QUEUE TICKET
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --primary: #111827;
+
+    --primary-soft: #eef2ff;
+
+    --background: #f8f3c2;
+
+    --surface: #ffffff;
+
+    --text: #111827;
+
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --success: #16a34a;
+
+    --success-light: #ecfdf3;
+
+    --danger: #dc2626;
+
+    --warning: #f59e0b;
+
+    --shadow:
+        0 12px 35px rgba(15, 23, 42, 0.08);
+
+    --radius-lg: 22px;
+
+    --radius-md: 14px;
+
+    --radius-sm: 10px;
+
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+
+    font-family:
+        Georgia, 'Times New Roman', Times, serif;
+
+    background: var(--background);
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    padding-bottom: 100px;
+
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.app-header {
+
+    height: 72px;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 18px;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 100;
+
+}
+
+
+.header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.back-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    background: #f3f4f6;
+
+    color: var(--text);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+
+.back-button span {
+
+    font-size: 29px;
+
+    line-height: 1;
+
+    margin-top: -3px;
+
+}
+
+
+.back-button:active {
+
+    transform: scale(0.94);
+
+}
+
+
+.header-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+
+.header-small {
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: #6b7280;
+
+}
+
+
+.header-title h1 {
+
+    font-size: 19px;
+
+    font-weight: 750;
+
+}
+
+
+.more-button {
+
+    width: 42px;
+
+    height: 42px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #374151;
+
+    font-size: 26px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.queue-container {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    margin: auto;
+
+    padding: 24px 16px 35px;
+
+}
+
+
+/* =========================================================
+   SUCCESS SECTION
+   ========================================================= */
+
+.success-section {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+
+.success-ring {
+
+    width: 64px;
+
+    height: 64px;
+
+    border-radius: 50%;
+
+    background: var(--success-light);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+}
+
+
+.success-check {
+
+    width: 43px;
+
+    height: 43px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 6px 15px rgba(22, 163, 74, 0.25);
+
+}
+
+
+.success-section h2 {
+
+    font-size: 23px;
+
+    font-weight: 750;
+
+    margin-bottom: 5px;
+
+}
+
+
+.success-section p {
+
+    color: var(--muted);
+
+    font-size: 13px;
+
+}
+
+
+/* =========================================================
+   TICKET WRAPPER
+   ========================================================= */
+
+.ticket-wrapper {
+
+    position: relative;
+
+    filter:
+        drop-shadow(
+            0 18px 30px rgba(15, 23, 42, 0.10)
+        );
+
+}
+
+
+/* =========================================================
+   TICKET CARD
+   ========================================================= */
+
+.ticket-card {
+
+    background: var(--surface);
+
+    border-radius: var(--radius-lg);
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+
+/* =========================================================
+   ORGANIZATION
+   ========================================================= */
+
+.organization {
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+
+.organization-logo {
+
+    width: 50px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    background: #f1f5f9;
+
+    border-radius: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.organization-logo img {
+
+    width: 32px;
+
+    height: 32px;
+
+    object-fit: contain;
+
+}
+
+
+.organization-text {
+
+    min-width: 0;
+    font-size: 17px;
+
+    flex: 1;
+
+}
+
+
+.organization-text span {
+
+    display: block;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.organization-text h2 {
+
+    font-size: 15px;
+
+    font-weight: 750;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.organization-text p {
+
+    font-size: 11px;
+
+    color: var(--muted);
+
+    margin-top: 3px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+
+.live-indicator {
+
+    align-self: flex-start;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+
+    color: var(--success);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+}
+
+
+.live-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+}
+
+
+/* =========================================================
+   TICKET CUT
+   ========================================================= */
+
+.ticket-cut {
+
+    height: 1px;
+
+    border-top: 1px dashed #d7dce3;
+
+    position: relative;
+
+}
+
+
+.ticket-cut::before,
+.ticket-cut::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 24px;
+
+    height: 24px;
+
+    border-radius: 50%;
+
+    background: var(--background);
+
+    top: -12px;
+
+}
+
+
+.ticket-cut::before {
+
+    left: -12px;
+
+}
+
+
+.ticket-cut::after {
+
+    right: -12px;
+
+}
+
+
+/* =========================================================
+   QUEUE NUMBER
+   ========================================================= */
+
+.queue-number {
+
+    text-align: center;
+
+    padding: 25px 20px 21px;
+
+}
+
+
+.queue-label {
+
+    display: block;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+
+    color: #9ca3af;
+
+    margin-bottom: 5px;
+
+}
+
+
+.queue-number strong {
+
+    display: block;
+
+    font-size: clamp(52px, 17vw, 76px);
+
+    line-height: 1;
+
+    letter-spacing: 2px;
+
+    font-weight: 800;
+
+    color: #111827;
+
+    margin-bottom: 12px;
+
+}
+
+
+.status-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 13px;
+
+    background: var(--success-light);
+
+    color: var(--success);
+
+    border-radius: 30px;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+}
+
+
+.status-badge span {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--success);
+
+}
+
+
+/* =========================================================
+   SERVICE
+   ========================================================= */
+
+.service-box {
+
+    margin: 0 18px 18px;
+
+    padding: 13px;
+
+    background: #f8fafc;
+
+    border: 1px solid #eef0f3;
+
+    border-radius: 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+
+.service-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    background: white;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.service-icon img {
+
+    width: 23px;
+
+    height: 23px;
+
+    object-fit: contain;
+
+}
+
+
+.service-box span {
+
+    display: block;
+
+    font-size: 15px;
+    font-style: italic;
+
+    font-weight: 800;
+
+    color: #9ca3af;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.service-box strong {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   QUEUE STATS
+   ========================================================= */
+
+.queue-stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    border-top: 1px solid #edf0f3;
+
+    border-bottom: 1px solid #edf0f3;
+
+}
+
+
+.stat {
+
+    text-align: center;
+
+    padding: 17px 5px;
+
+    position: relative;
+
+}
+
+
+.stat:not(:last-child)::after {
+
+    content: "";
+
+    position: absolute;
+
+    right: 0;
+
+    top: 20%;
+
+    height: 60%;
+
+    width: 1px;
+
+    background: #e5e7eb;
+
+}
+
+
+.stat span {
+
+    display: block;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.8px;
+
+    color: #9ca3af;
+
+    margin-bottom: 6px;
+
+}
+
+
+.stat strong {
+
+    font-size: 20px;
+
+    font-weight: 750;
+
+}
+
+
+.stat small {
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: var(--muted);
+
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.queue-progress-section {
+
+    padding: 18px 19px 20px;
+
+}
+
+
+.progress-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 13px;
+
+    color: var(--muted);
+
+    margin-bottom: 8px;
+
+}
+
+
+.progress-header b {
+
+    color: var(--text);
+
+}
+
+
+.progress-track {
+
+    width: 100%;
+
+    height: 7px;
+
+    background: #e9edf2;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+}
+
+
+.progress-bar {
+
+    width: 35%;
+
+    height: 100%;
+
+    border-radius: 20px;
+
+    background: var(--primary);
+
+    transition: width 0.5s ease;
+
+}
+
+
+.queue-progress-section p {
+
+    margin-top: 11px;
+
+    font-size: 13px;
+
+    color: #9ca3af;
+
+}
+
+
+/* =========================================================
+   TICKET INFORMATION
+   ========================================================= */
+
+.ticket-information {
+
+    margin: 0 19px;
+
+    padding: 14px 0;
+
+    border-top: 1px dashed #e0e4e8;
+
+}
+
+
+.information-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 7px 0;
+
+}
+
+
+.information-row span {
+
+    font-size: 13px;
+
+    color: #8b929d;
+
+}
+
+
+.information-row strong {
+
+    font-size: 13px;
+
+    font-weight: 650;
+
+    color: #374151;
+
+}
+
+
+/* =========================================================
+   QR SECTION
+   ========================================================= */
+
+.qr-section {
+
+    margin-top: 5px;
+
+    padding: 17px 19px;
+
+    background: #fafafa;
+
+    border-top: 1px solid #f0f0f0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+}
+
+
+.qr-placeholder {
+
+    width: 58px;
+
+    height: 58px;
+
+    padding: 5px;
+
+    background: white;
+
+    border: 1px solid #e5e7eb;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.qr-grid {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 2px;
+
+}
+
+
+.qr-grid span {
+
+    background: #111827;
+
+}
+
+
+.qr-grid span:nth-child(2),
+.qr-grid span:nth-child(5),
+.qr-grid span:nth-child(10),
+.qr-grid span:nth-child(14) {
+
+    background: white;
+
+}
+
+
+.qr-section strong {
+
+    display: block;
+
+    font-size: 13px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.qr-section p {
+
+    font-size: 11px;
+
+    color: #9ca3af;
+
+}
+
+
+/* =========================================================
+   ALERT
+   ========================================================= */
+
+.queue-alert {
+
+    margin-top: 15px;
+
+    padding: 15px;
+
+    background: #fffaf0;
+
+    border: 1px solid #f8e8c6;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    gap: 11px;
+
+}
+
+
+.alert-icon {
+
+    width: 25px;
+
+    height: 25px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #f59e0b;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 800;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+
+.alert-content h3 {
+
+    font-size: 12px;
+
+    margin-bottom: 4px;
+
+}
+
+
+.alert-content p {
+
+    font-size: 11px;
+    font-style: italic;
+
+    line-height: 1.5;
+
+    color: #78716c;
+
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.ticket-actions {
+
+    margin-top: 16px;
+
+    display: grid;
+
+    gap: 9px;
+
+}
+
+
+.ticket-actions button {
+
+    min-height: 50px;
+
+    border-radius: 14px;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        box-shadow 0.15s ease,
+        background 0.15s ease;
+
+}
+
+
+.ticket-actions button:active {
+
+    transform: scale(0.98);
+
+}
+
+
+.primary-button {
+
+    border: none;
+
+    background: var(--primary);
+
+    color: white;
+
+    box-shadow:
+        0 7px 18px rgba(17, 24, 39, 0.16);
+
+}
+
+
+.primary-button:hover {
+
+    box-shadow:
+        0 9px 23px rgba(17, 24, 39, 0.22);
+
+}
+
+
+.button-icon {
+
+    margin-right: 7px;
+
+    font-size: 16px;
+
+}
+
+
+.secondary-button {
+
+    border: 1px solid #e2e5e9;
+
+    background: white;
+
+    color: var(--danger);
+
+}
+
+
+.secondary-button:hover {
+
+    background: #fff8f8;
+
+}
+
+
+/* =========================================================
+   FOOT NOTE
+   ========================================================= */
+
+.ticket-footer-note {
+
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 11px;
+    font-style: italic;
+    font-family: mono, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    color: #9ca3af;
+
+}
+
+
+.ticket-footer-note strong {
+
+    color: #6b7280;
+
+}
+
+
+/* =========================================================
+   BOTTOM NAVIGATION
+   ========================================================= */
+
+.bottom-navigation {
+
+    position: fixed;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 100%;
+
+    height: 76px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    backdrop-filter: blur(16px);
+
+    -webkit-backdrop-filter: blur(16px);
+
+    border-top: 1px solid #e5e7eb;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    z-index: 200;
+
+    padding-bottom: env(safe-area-inset-bottom);
+
+}
+
+
+.bottom-navigation a {
+
+    text-decoration: none;
+
+    color: #9ca3af;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    min-width: 0;
+
+}
+
+
+.bottom-navigation img {
+
+    width: 22px;
+
+    height: 22px;
+
+    object-fit: contain;
+
+    opacity: 0.65;
+
+}
+
+
+.bottom-navigation span {
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+}
+
+
+.bottom-navigation .nav-active {
+
+    color: #111827;
+
+}
+
+
+.bottom-navigation .nav-active img {
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media screen and (max-width: 360px) {
+
+    .queue-container {
+
+        padding-left: 11px;
+
+        padding-right: 11px;
+
+    }
+
+
+    .organization {
+
+        padding: 16px;
+
+    }
+
+
+    .organization-logo {
+
+        width: 44px;
+
+        height: 44px;
+
+    }
+
+
+    .organization-text h2 {
+
+        font-size: 13px;
+
+    }
+
+
+    .queue-number {
+
+        padding-top: 22px;
+
+    }
+
+
+    .queue-number strong {
+
+        font-size: 52px;
+
+    }
+
+
+    .stat strong {
+
+        font-size: 17px;
+
+    }
+
+
+    .queue-alert {
+
+        padding: 12px;
+
+    }
+
+}
+
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media screen and (min-width: 600px) {
+
+    .queue-container {
+
+        max-width: 550px;
+
+        padding-top: 35px;
+
+    }
+
+
+    .ticket-card {
+
+        border-radius: 26px;
+
+    }
+
+
+    .queue-number strong {
+
+        font-size: 76px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+   ========================================================= */
+
+@media screen and (min-width: 900px) {
+
+    body {
+
+        padding-bottom: 30px;
+
+    }
+
+
+    .queue-container {
+
+        max-width: 560px;
+
+    }
+
+
+    .bottom-navigation {
+
+        width: 420px;
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+        bottom: 15px;
+
+        border: 1px solid #e5e7eb;
+
+        border-radius: 20px;
+
+        height: 68px;
+
+        box-shadow:
+            0 10px 30px rgba(15, 23, 42, 0.08);
+
+    }
+
+}

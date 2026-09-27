@@ -1,0 +1,555 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color"
+        content="#0f172a">
+
+    <title>My Queue | SmartQueue</title>
+
+    <link rel="stylesheet"
+        href="../CSS/queue_ticket.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APP HEADER
+         ===================================================== -->
+
+    <header class="app-header">
+
+        <div class="header-left">
+
+            <button
+                class="back-button"
+                onclick="history.back()"
+                aria-label="Go back">
+
+                <span>‹</span>
+
+            </button>
+
+            <div class="header-title">
+
+                <span class="header-small">
+                    SMARTQUEUE
+                </span>
+
+                <h1>
+                    My Queue
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="more-button"
+            aria-label="More options">
+
+            <span>⋮</span>
+
+        </button>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="queue-container">
+
+
+        <!-- =================================================
+             SUCCESS AREA
+             ================================================= -->
+
+        <section class="success-section">
+
+            <div class="success-ring">
+
+                <div class="success-check">
+                    ✓
+                </div>
+
+            </div>
+
+
+            <h2>
+                You're in the queue
+            </h2>
+
+            <p>
+                Your place has been successfully reserved.
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             DIGITAL TICKET
+             ================================================= -->
+
+        <section class="ticket-wrapper">
+
+
+            <!-- TOP TICKET -->
+            <div class="ticket-card">
+
+
+                <!-- Organization -->
+                <div class="organization">
+
+                    <div class="organization-logo">
+
+                        <img
+                            src="../images/app-images/banks.png"
+                            alt="Organization logo"
+                            id="organizationImage">
+
+                    </div>
+
+
+                    <div class="organization-text">
+
+                        <span>
+                            ORGANIZATION
+                        </span>
+
+                        <h2 id="organizationName">
+                            ABC Bank Uganda
+                        </h2>
+
+                        <p id="branchName">
+                            Kampala Main Branch
+                        </p>
+
+                    </div>
+
+
+                    <div class="live-indicator">
+
+                        <span class="live-dot"></span>
+
+                        LIVE
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Ticket separator -->
+                <div class="ticket-cut">
+
+                    <span></span>
+
+                    <span></span>
+
+                </div>
+
+
+
+                <!-- Queue number -->
+                <div class="queue-number">
+
+                    <span class="queue-label">
+                        YOUR QUEUE NUMBER
+                    </span>
+
+                    <strong id="ticketNumber">
+                        B012
+                    </strong>
+
+                    <div
+                        class="status-badge"
+                        id="queueStatus">
+
+                        <span></span>
+                        WAITING
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Service -->
+                <div class="service-box">
+
+                    <div class="service-icon">
+
+                        <img
+                            src="../images/app-images/services.png"
+                            alt="Service">
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            SERVICE
+                        </span>
+
+                        <strong id="serviceName">
+                            Account Opening
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Queue statistics -->
+                <div class="queue-stats">
+
+
+                    <div class="stat">
+
+                        <span>
+                            POSITION
+                        </span>
+
+                        <strong id="queuePosition">
+                            7
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            AHEAD
+                        </span>
+
+                        <strong id="peopleAhead">
+                            6
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stat">
+
+                        <span>
+                            WAIT TIME
+                        </span>
+
+                        <strong>
+
+                            <span id="estimatedWait">
+                                35
+                            </span>
+
+                            <small>
+                                min
+                            </small>
+
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- Queue progress -->
+                <div class="queue-progress-section">
+
+                    <div class="progress-header">
+
+                        <span>
+                            Queue progress
+                        </span>
+
+                        <span>
+                            <b id="progressPosition">
+                                7
+                            </b>
+                            in line
+                        </span>
+
+                    </div>
+
+
+                    <div class="progress-track">
+
+                        <div
+                            class="progress-bar"
+                            id="progressBar">
+                        </div>
+
+                    </div>
+
+                    <p>
+                        We'll notify you when your turn is approaching.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Ticket information -->
+                <div class="ticket-information">
+
+
+                    <div class="information-row">
+
+                        <span>
+                            Joined
+                        </span>
+
+                        <strong id="joinedTime">
+                            10:42 AM
+                        </strong>
+
+                    </div>
+
+
+                    <div class="information-row">
+
+                        <span>
+                            Date
+                        </span>
+
+                        <strong id="joinedDate">
+                            27 Sep 2026
+                        </strong>
+
+                    </div>
+
+
+                    <div class="information-row">
+
+                        <span>
+                            Ticket ID
+                        </span>
+
+                        <strong id="ticketId">
+                            SQ-8F29K2
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- QR area -->
+                <div class="qr-section">
+
+                    <div class="qr-placeholder">
+
+                        <div class="qr-grid">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Digital Ticket
+                        </strong>
+
+                        <p>
+                            Show this ticket when requested.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             IMPORTANT MESSAGE
+             ================================================= -->
+
+        <section class="queue-alert">
+
+            <div class="alert-icon">
+                !
+            </div>
+
+
+            <div class="alert-content">
+
+                <h3>
+                    Stay nearby
+                </h3>
+
+                <p>
+                    Keep an eye on your queue position.
+                    SmartQueue will notify you when your
+                    turn is approaching.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACTION BUTTONS
+             ================================================= -->
+
+        <section class="ticket-actions">
+
+
+            <button
+                class="primary-button"
+                id="trackQueueBtn">
+
+                <span class="button-icon">
+                    ↗
+                </span>
+
+                Track My Queue
+
+            </button>
+
+
+            <button
+                class="secondary-button"
+                id="cancelQueueBtn">
+
+                Leave Queue
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOT NOTE
+             ================================================= -->
+
+        <p class="ticket-footer-note">
+
+            Ticket generated by
+            <strong>SmartQueue Uganda</strong>
+
+        </p>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         BOTTOM NAVIGATION
+         ===================================================== -->
+
+    <nav class="bottom-navigation">
+
+
+        <a href="home.html">
+
+            <img
+                src="../images/app-images/home.png"
+                alt="Home">
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <a
+            href="queue-ticket.html"
+            class="nav-active">
+
+            <img
+                src="../images/app-images/join_queue.png"
+                alt="My Queue">
+
+            <span>
+                My Queue
+            </span>
+
+        </a>
+
+
+        <a href="service_choice.html">
+
+            <img
+                src="../images/app-images/services.png"
+                alt="Services">
+
+            <span>
+                Services
+            </span>
+
+        </a>
+
+
+        <a href="#">
+
+            <img
+                src="../images/app-images/user_profile.png"
+                alt="Profile">
+
+            <span>
+                Profile
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <script src="../JS/queue-ticket.js"></script>
+
+</body>
+
+</html>
