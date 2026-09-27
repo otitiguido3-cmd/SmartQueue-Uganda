@@ -1437,3 +1437,38 @@ body {
     }
 
 }
+
+
+/* Styling the track ticket button */
+
+.track-ticket-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 50px;
+
+    padding: 12px 20px;
+
+    background: #111827;
+    color: #ffffff;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    transition: all 0.25s ease;
+}
+
+.track-ticket-btn:hover {
+    background: #1f2937;
+    transform: translateY(-2px);
+}
+
+.track-ticket-btn:active {
+    transform: scale(0.98);
+}

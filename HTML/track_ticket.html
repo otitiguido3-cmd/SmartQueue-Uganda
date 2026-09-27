@@ -1,0 +1,493 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Track My Queue | SmartQueue Uganda</title>
+
+    <link rel="stylesheet" href="../CSS/track_ticket.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         APP HEADER
+    ========================== -->
+    <header class="app-header">
+
+        <button class="back-btn" onclick="history.back()" aria-label="Go back">
+            &#8592;
+        </button>
+
+        <div class="header-title">
+            <span>SMARTQUEUE</span>
+            <h1>Track My Queue</h1>
+        </div>
+
+        <button class="more-btn" aria-label="More options">
+            &#8942;
+        </button>
+
+    </header>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="track-container">
+
+        <!-- LIVE STATUS -->
+        <section class="live-status">
+
+            <div class="live-indicator">
+                <span class="live-dot"></span>
+                <span>LIVE QUEUE</span>
+            </div>
+
+            <span id="lastUpdated">Updated just now</span>
+
+        </section>
+
+
+        <!-- =========================
+             POSITION CARD
+        ========================== -->
+        <section class="position-card">
+
+            <div class="position-header">
+
+                <div>
+                    <p class="small-label">YOUR POSITION</p>
+
+                    <h2>
+                        #<span id="queuePosition">7</span>
+                    </h2>
+                </div>
+
+                <div class="ticket-number">
+                    <span>Ticket</span>
+                    <strong id="ticketNumber">B012</strong>
+                </div>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+            <div class="progress-section">
+
+                <div class="progress-labels">
+                    <span>Queue progress</span>
+                    <span id="progressPercent">65%</span>
+                </div>
+
+                <div class="progress-track">
+                    <div
+                        class="progress-bar"
+                        id="progressBar"
+                        style="width: 65%;">
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- QUICK STATS -->
+            <div class="quick-stats">
+
+                <div class="stat">
+                    <strong id="peopleAhead">6</strong>
+                    <span>People ahead</span>
+                </div>
+
+                <div class="stat-divider"></div>
+
+                <div class="stat">
+                    <strong>
+                        <span id="estimatedWait">30</span> min
+                    </strong>
+                    <span>Estimated wait</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ORGANIZATION
+        ========================== -->
+        <section class="info-card">
+
+            <div class="card-icon image-icon">
+                <img
+                    src="../images/app-images/banks.png"
+                    alt="Bank">
+            </div>
+
+            <div class="card-content">
+
+                <span class="card-label">ORGANIZATION</span>
+
+                <h3 id="organizationName">
+                    ABC Bank Uganda
+                </h3>
+
+                <p id="branchName">
+                    Kampala Main Branch
+                </p>
+
+            </div>
+
+            <span class="active-badge">
+                Active
+            </span>
+
+        </section>
+
+
+        <!-- =========================
+             SERVICE
+        ========================== -->
+        <section class="info-card">
+
+            <div class="card-icon image-icon">
+                <img
+                    src="../images/app-images/services.png"
+                    alt="Service">
+            </div>
+
+            <div class="card-content">
+
+                <span class="card-label">SERVICE</span>
+
+                <h3 id="serviceName">
+                    Account Opening
+                </h3>
+
+                <p>
+                    Selected service
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUEUE JOURNEY
+        ========================== -->
+        <section class="section-block">
+
+            <div class="section-heading">
+                <h2>Queue Journey</h2>
+                <span>Live</span>
+            </div>
+
+
+            <div class="timeline">
+
+                <!-- STEP 1 -->
+                <div class="timeline-item completed">
+
+                    <div class="timeline-icon">
+                        &#10003;
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>Joined the queue</h3>
+
+                        <p>
+                            <span id="joinedTime">10:42 AM</span>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 2 -->
+                <div class="timeline-item current">
+
+                    <div class="timeline-icon">
+                        &#9679;
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>Waiting for your turn</h3>
+
+                        <p>
+                            <span id="journeyPeopleAhead">
+                                6 people ahead
+                            </span>
+                        </p>
+
+                        <span class="journey-status" id="journeyStatus">
+                            WAITING
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 3 -->
+                <div class="timeline-item upcoming">
+
+                    <div class="timeline-icon">
+                        &#9675;
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>Almost your turn</h3>
+
+                        <p>
+                            We'll notify you when you're next.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STEP 4 -->
+                <div class="timeline-item upcoming">
+
+                    <div class="timeline-icon">
+                        &#9675;
+                    </div>
+
+                    <div class="timeline-content">
+
+                        <h3>Your turn</h3>
+
+                        <p>
+                            Proceed to the service point.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ESTIMATED CALL
+        ========================== -->
+        <section class="estimated-card">
+
+            <div class="estimated-icon">
+                &#9200;
+            </div>
+
+            <div>
+
+                <span>ESTIMATED CALL</span>
+
+                <h3 id="estimatedCall">
+                    Around 11:12 AM
+                </h3>
+
+                <p>
+                    This time may change as the queue moves.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             NOTIFICATIONS
+        ========================== -->
+        <section class="notification-card">
+
+            <div class="notification-text">
+
+                <div class="notification-icon">
+                    &#128276;
+                </div>
+
+                <div>
+
+                    <h3>Notifications are ON</h3>
+
+                    <p>
+                        We'll alert you when your turn is near.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <button
+                class="toggle active"
+                id="notificationToggle"
+                aria-label="Toggle notifications">
+
+                <span></span>
+
+            </button>
+
+        </section>
+
+
+        <!-- =========================
+             TICKET DETAILS
+        ========================== -->
+        <section class="details-card">
+
+            <div class="section-heading">
+                <h2>Ticket Details</h2>
+            </div>
+
+            <div class="detail-row">
+
+                <span>Ticket ID</span>
+
+                <strong id="ticketId">
+                    SQ-8F29K2
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>Date joined</span>
+
+                <strong id="joinedDate">
+                    27 September 2026
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>Queue number</span>
+
+                <strong id="detailTicketNumber">
+                    B012
+                </strong>
+
+            </div>
+
+
+            <div class="detail-row">
+
+                <span>Service</span>
+
+                <strong id="detailService">
+                    Account Opening
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             ACTION BUTTONS
+        ========================== -->
+        <section class="action-section">
+
+            <button
+                class="refresh-btn"
+                id="refreshQueueBtn">
+
+                &#8635;
+                Refresh Queue
+
+            </button>
+
+
+            <button
+                class="leave-btn"
+                id="leaveQueueBtn">
+
+                Leave Queue
+
+            </button>
+
+            <button type="button" id="resetQueueBtn" class="reset-queue-btn">Reset Queue
+</button>
+
+        </section>
+
+
+        <!-- =========================
+             FOOTER MESSAGE
+        ========================== -->
+        <section class="smartqueue-note">
+
+            <strong>SmartQueue Uganda</strong>
+
+            <p>
+                Skip the line, Save time!
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         BOTTOM NAVIGATION
+    ========================== -->
+    <nav class="bottom-nav">
+
+        <a href="home.html" class="nav-item">
+
+            <span class="nav-icon">&#8962;</span>
+
+            <span>Home</span>
+
+        </a>
+
+
+        <a href="track-queue.html" class="nav-item active">
+
+            <span class="nav-icon">&#9776;</span>
+
+            <span>My Queue</span>
+
+        </a>
+
+
+        <a href="service_choice.html" class="nav-item">
+
+            <span class="nav-icon">&#9632;</span>
+
+            <span>Services</span>
+
+        </a>
+
+
+        <a href="profile.html" class="nav-item">
+
+            <span class="nav-icon">&#9786;</span>
+
+            <span>Profile</span>
+
+        </a>
+
+    </nav>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="../JS/track_ticket.js"></script>
+    <script src="../JS/reset_queue.js"></script>
+
+</body>
+
+</html>
+

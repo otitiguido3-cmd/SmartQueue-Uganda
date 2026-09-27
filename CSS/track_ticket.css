@@ -1,0 +1,1032 @@
+
+/* =========================================================
+   SMARTQUEUE UGANDA
+   TRACK MY QUEUE PAGE
+   ========================================================= */
+
+
+/* =========================
+   GLOBAL RESET
+   ========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: georgia, "Times New Roman", Times, serif;
+    background: #f5f7fb;
+    color: #111827;
+    line-height: 1.5;
+    padding-bottom: 85px;
+}
+
+
+/* =========================
+   CSS VARIABLES
+   ========================= */
+
+:root {
+    --primary: #111827;
+    --primary-light: #1f2937;
+
+    --background: #98d3cc;
+    --surface: #ffffff;
+
+    --text: #111827;
+    --muted: #6b7280;
+
+    --border: #e5e7eb;
+
+    --success: #16a34a;
+    --success-light: #ecfdf3;
+
+    --blue: #2563eb;
+    --blue-light: #eff6ff;
+
+    --danger: #dc2626;
+
+    --radius: 16px;
+}
+
+
+/* =========================
+   APP HEADER
+   ========================= */
+
+.app-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 70px;
+    padding: 10px 16px;
+
+    background: rgba(255, 255, 255, 0.94);
+    border-bottom: 1px solid var(--border);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.back-btn,
+.more-btn {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #f3f4f6;
+    color: var(--text);
+
+    font-size: 23px;
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.back-btn:hover,
+.more-btn:hover {
+    background: #e5e7eb;
+}
+
+.header-title {
+    text-align: center;
+}
+
+.header-title span {
+    display: block;
+
+    color: var(--blue);
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.header-title h1 {
+    margin-top: 2px;
+
+    font-size: 17px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   MAIN CONTAINER
+   ========================= */
+
+.track-container {
+    width: 100%;
+    max-width: 650px;
+
+    margin: 0 auto;
+    padding: 18px 15px 30px;
+}
+
+
+/* =========================
+   LIVE STATUS
+   ========================= */
+
+.live-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.live-indicator {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: var(--success);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.live-dot {
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background: var(--success);
+
+    animation: livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+
+    0% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.4);
+    }
+
+    70% {
+        box-shadow: 0 0 0 7px rgba(22, 163, 74, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+    }
+}
+
+
+/* =========================
+   POSITION CARD
+   ========================= */
+
+.position-card {
+    padding: 22px;
+
+    color: white;
+
+    background: linear-gradient(
+        145deg,
+        #111827,
+        #1f2937
+    );
+
+    border-radius: 20px;
+
+    box-shadow: 0 12px 30px rgba(17, 24, 39, 0.18);
+}
+
+.position-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.small-label {
+    margin-bottom: 2px;
+
+    color: #9ca3af;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.position-header h2 {
+    font-size: 52px;
+    line-height: 1.05;
+}
+
+.ticket-number {
+    text-align: right;
+}
+
+.ticket-number span {
+    display: block;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+}
+
+.ticket-number strong {
+    display: block;
+
+    margin-top: 3px;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   PROGRESS
+   ========================= */
+
+.progress-section {
+    margin-top: 24px;
+}
+
+.progress-labels {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 8px;
+
+    color: #d1d5db;
+
+    font-size: 11px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 8px;
+
+    overflow: hidden;
+
+    background: #374151;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    height: 100%;
+
+    background: #ffffff;
+    border-radius: inherit;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================
+   QUICK STATS
+   ========================= */
+
+.quick-stats {
+    display: flex;
+    align-items: center;
+
+    margin-top: 22px;
+}
+
+.stat {
+    flex: 1;
+
+    text-align: center;
+}
+
+.stat strong {
+    display: block;
+
+    font-size: 20px;
+}
+
+.stat span {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #9ca3af;
+
+    font-size: 11px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 35px;
+
+    background: #374151;
+}
+
+
+/* =========================
+   INFORMATION CARDS
+   ========================= */
+
+.info-card {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    margin-top: 14px;
+    padding: 16px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: var(--blue-light);
+
+    overflow: hidden;
+}
+
+.card-icon img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+}
+
+.card-content {
+    min-width: 0;
+    padding-right: 45px;
+}
+
+.card-label {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.card-content h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.card-content p {
+    margin-top: 1px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.active-badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    padding: 4px 8px;
+
+    color: var(--success);
+
+    background: var(--success-light);
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   SECTION BLOCK
+   ========================= */
+
+.section-block {
+    margin-top: 25px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 14px;
+}
+
+.section-heading h2 {
+    font-size: 17px;
+}
+
+.section-heading > span {
+    color: var(--success);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   QUEUE TIMELINE
+   ========================= */
+
+.timeline {
+    position: relative;
+
+    padding-left: 5px;
+}
+
+.timeline::before {
+    content: "";
+
+    position: absolute;
+    top: 15px;
+    bottom: 15px;
+    left: 18px;
+
+    width: 2px;
+
+    background: #e5e7eb;
+}
+
+.timeline-item {
+    position: relative;
+
+    display: flex;
+    gap: 15px;
+
+    min-height: 75px;
+}
+
+.timeline-icon {
+    position: relative;
+    z-index: 2;
+
+    width: 29px;
+    height: 29px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e5e7eb;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.timeline-item.completed .timeline-icon {
+    color: white;
+    background: var(--success);
+}
+
+.timeline-item.current .timeline-icon {
+    color: white;
+    background: var(--blue);
+
+    box-shadow: 0 0 0 5px var(--blue-light);
+}
+
+.timeline-content {
+    padding-bottom: 20px;
+}
+
+.timeline-content h3 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.timeline-content p {
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.journey-status {
+    display: inline-block;
+
+    margin-top: 6px;
+    padding: 3px 8px;
+
+    color: var(--blue);
+
+    background: var(--blue-light);
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+/* =========================
+   ESTIMATED CALL
+   ========================= */
+
+.estimated-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 5px;
+    padding: 16px;
+
+    background: var(--blue-light);
+
+    border: 1px solid #dbeafe;
+    border-radius: var(--radius);
+}
+
+.estimated-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    border-radius: 12px;
+
+    font-size: 20px;
+}
+
+.estimated-card span {
+    color: var(--blue);
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+}
+
+.estimated-card h3 {
+    margin-top: 1px;
+
+    font-size: 16px;
+}
+
+.estimated-card p {
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   NOTIFICATION CARD
+   ========================= */
+
+.notification-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    margin-top: 14px;
+    padding: 15px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.notification-text {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    background: #fef3c7;
+
+    border-radius: 11px;
+
+    font-size: 18px;
+}
+
+.notification-card h3 {
+    font-size: 13px;
+}
+
+.notification-card p {
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   NOTIFICATION TOGGLE
+   ========================= */
+
+.toggle {
+    position: relative;
+
+    width: 48px;
+    height: 27px;
+
+    flex-shrink: 0;
+
+    border: none;
+    border-radius: 20px;
+
+    background: #d1d5db;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.toggle span {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 21px;
+    height: 21px;
+
+    border-radius: 50%;
+
+    background: white;
+
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+    transition: 0.25s ease;
+}
+
+.toggle.active {
+    background: var(--success);
+}
+
+.toggle.active span {
+    transform: translateX(21px);
+}
+
+
+/* =========================
+   TICKET DETAILS
+   ========================= */
+
+.details-card {
+    margin-top: 25px;
+    padding: 17px;
+
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+.detail-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    padding: 12px 0;
+
+    border-bottom: 1px solid #f0f1f3;
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row span {
+    color: var(--muted);
+
+    font-size: 12px;
+}
+
+.detail-row strong {
+    text-align: right;
+
+    font-size: 12px;
+    word-break: break-word;
+}
+
+
+/* =========================
+   ACTION BUTTONS
+   ========================= */
+
+.action-section {
+    display: grid;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.refresh-btn,
+.leave-btn {
+    width: 100%;
+
+    min-height: 48px;
+
+    border-radius: 13px;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.refresh-btn {
+    border: none;
+
+    color: white;
+    background: var(--primary);
+}
+
+.refresh-btn:hover {
+    background: var(--primary-light);
+}
+
+.refresh-btn:active {
+    transform: scale(0.98);
+}
+
+.leave-btn {
+    border: 1px solid #fecaca;
+
+    color: var(--danger);
+    background: #fff;
+
+}
+
+.leave-btn:hover {
+    background: #fef2f2;
+}
+
+
+/* =========================
+   SMARTQUEUE NOTE
+   ========================= */
+
+.smartqueue-note {
+    padding: 25px 0 10px;
+
+    text-align: center;
+}
+
+.smartqueue-note strong {
+    font-size: 13px;
+}
+
+.smartqueue-note p {
+    margin-top: 2px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   BOTTOM NAVIGATION
+   ========================= */
+
+.bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 200;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    height: 70px;
+
+    background: rgba(255, 255, 255, 0.97);
+
+    border-top: 1px solid var(--border);
+
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    color: #9ca3af;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.nav-icon {
+    font-size: 19px;
+}
+
+.nav-item.active {
+    color: var(--blue);
+}
+
+.nav-item:hover {
+    color: var(--blue);
+}
+
+
+/* =========================
+   SMALL PHONES
+   ========================= */
+
+@media (max-width: 360px) {
+
+    .track-container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .position-card {
+        padding: 18px;
+    }
+
+    .position-header h2 {
+        font-size: 45px;
+    }
+
+    .ticket-number strong {
+        font-size: 19px;
+    }
+
+    .card-content h3 {
+        font-size: 14px;
+    }
+
+    .notification-card {
+        padding: 13px;
+    }
+}
+
+
+/* =========================
+   TABLETS
+   ========================= */
+
+@media (min-width: 600px) {
+
+    .track-container {
+        padding: 25px 20px 40px;
+    }
+
+    .app-header {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .position-card {
+        padding: 26px;
+    }
+
+    .position-header h2 {
+        font-size: 58px;
+    }
+
+    .action-section {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+/* =========================
+   DESKTOP
+   ========================= */
+
+@media (min-width: 900px) {
+
+    body {
+        padding-bottom: 30px;
+    }
+
+    .app-header {
+        min-height: 76px;
+    }
+
+    .track-container {
+        max-width: 720px;
+
+        padding-top: 30px;
+    }
+
+    .bottom-nav {
+        left: 50%;
+        right: auto;
+        bottom: 18px;
+
+        width: 500px;
+        height: 62px;
+
+        transform: translateX(-50%);
+
+        border: 1px solid var(--border);
+        border-radius: 20px;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+
+
+
+/* RESET BUTTON TO BE REMOVED AFTER TESTING THE APP*/
+/* =========================================================
+   RESET QUEUE BUTTON
+   ========================================================= */
+
+.reset-queue-btn {
+    width: 100%;
+    min-height: 46px;
+
+    margin-top: 10px;
+    padding: 12px 18px;
+
+    border: 1px solid #d1d5db;
+    border-radius: 13px;
+
+    background: #ffffff;
+    color: #374151;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+.reset-queue-btn:hover {
+    background: #f3f4f6;
+    border-color: #9ca3af;
+}
+
+.reset-queue-btn:active {
+    transform: scale(0.98);
+}
